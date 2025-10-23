@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALL 125 Assignment 3 Checklist</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --dark-blue: #0a2a60;
             --dark-orange: #d35400;
-            --red: #c00000;
-            --gold: #d4af37;
             --green: #006400;
-            --black: #000000;
-            --white: #ffffff;
         }
         
         * {
@@ -24,301 +19,165 @@
         }
         
         body {
-            background-color: var(--white);
-            color: var(--black);
-            line-height: 1.6;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.5;
             padding: 20px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
         header {
             background: linear-gradient(to right, var(--dark-blue), var(--dark-orange));
-            color: var(--white);
-            padding: 20px 0;
-            margin-bottom: 30px;
+            color: #fff;
+            padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 30px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-icon {
-            background-color: var(--gold);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--black);
-            font-weight: bold;
         }
         
         h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
         
         .module-info {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
         }
         
         .checklist-container {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        @media (max-width: 900px) {
-            .checklist-container {
-                grid-template-columns: 1fr;
-            }
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
         
         .checklist {
-            background-color: var(--white);
+            background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
         }
         
         .section-title {
             color: var(--dark-blue);
             border-bottom: 2px solid var(--dark-orange);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-title::before {
-            content: "";
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: var(--dark-orange);
-            border-radius: 50%;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
         }
         
         .checklist-item {
-            margin-bottom: 18px;
-            padding-left: 25px;
+            margin-bottom: 12px;
+            padding-left: 15px;
             position: relative;
         }
         
         .checklist-item::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border: 2px solid var(--dark-blue);
-            border-radius: 50%;
-        }
-        
-        .checklist-item.completed::before {
-            background-color: var(--green);
-            border-color: var(--green);
-        }
-        
-        .checklist-item.completed::after {
             content: "✓";
             position: absolute;
-            left: 2px;
-            top: -2px;
-            color: var(--white);
+            left: 0;
+            top: 2px;
+            color: var(--green);
             font-weight: bold;
         }
         
-        .notes-section {
-            background-color: var(--white);
+        .citations {
+            background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-top: 20px;
         }
         
-        textarea {
-            width: 100%;
-            height: 200px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            resize: vertical;
-            font-family: 'Arial', sans-serif;
-            margin-bottom: 20px;
+        .citation-header {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .citation-item {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 3px solid var(--dark-orange);
+        }
+        
+        .reference-list {
+            margin-top: 15px;
+        }
+        
+        .reference-item {
+            margin-bottom: 6px;
+            padding-left: 10px;
+            font-size: 0.9rem;
         }
         
         .student-info {
-            background-color: var(--white);
+            background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 25px;
-            margin-top: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px;
+            margin-top: 20px;
         }
         
         .info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        @media (max-width: 600px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
+            gap: 10px;
         }
         
         .info-item {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .info-label {
             font-weight: bold;
             color: var(--dark-blue);
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
+            font-size: 0.85rem;
+        }
+        
+        .student-input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 0.85rem;
         }
         
         .btn {
             background: linear-gradient(to right, var(--dark-blue), var(--dark-orange));
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 8px 15px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
+            gap: 5px;
         }
         
         .btn-pdf {
-            background: linear-gradient(to right, var(--red), var(--gold));
-        }
-        
-        .citations {
-            background-color: var(--white);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 25px;
-            margin-top: 30px;
-        }
-        
-        .citation-title {
-            color: var(--dark-blue);
-            margin-bottom: 15px;
-        }
-        
-        .citation-item {
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 3px solid var(--dark-orange);
-        }
-        
-        .reference-list {
-            margin-top: 25px;
-        }
-        
-        .reference-title {
-            color: var(--dark-blue);
-            margin-bottom: 15px;
-        }
-        
-        .reference-item {
-            margin-bottom: 12px;
-            padding-left: 15px;
-            text-indent: -15px;
-        }
-        
-        .accent-bar {
-            height: 5px;
-            background: linear-gradient(to right, var(--red), var(--gold), var(--green), var(--dark-blue));
-            margin: 25px 0;
-        }
-        
-        .voice-narration {
-            background-color: #f8f9fa;
-            border-left: 5px solid var(--dark-blue);
-            padding: 15px;
-            margin: 20px 0;
-        }
-        
-        .important-note {
-            background-color: #fff8e1;
-            border-left: 5px solid var(--gold);
-            padding: 15px;
-            margin: 20px 0;
+            background: linear-gradient(to right, #c00000, #d4af37);
         }
         
         footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 15px 0;
             color: #666;
-            font-size: 0.9rem;
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-        }
-        
-        .module-badge {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
-        
-        .highlight {
-            background-color: #fff8e1;
-            padding: 2px 5px;
-            border-radius: 3px;
-            color: var(--dark-blue);
-        }
-        
-        .requirement-badge {
-            display: inline-block;
-            background-color: var(--dark-orange);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 3px;
             font-size: 0.8rem;
-            margin-left: 5px;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
         }
     </style>
 </head>
@@ -326,293 +185,98 @@
     <div class="container" id="content">
         <header>
             <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">A3</div>
-                    <div>
-                        <h1>Assignment 3: Group Presentation Checklist</h1>
-                        <p>For ALL 125 Module | Group Presentation Requirements</p>
-                    </div>
+                <div>
+                    <h1>ALL 125 Assignment 3</h1>
+                    <p>Group Presentation Checklist</p>
                 </div>
-                <div class="module-info">
-                    <strong>Module:</strong> ALL 125 | <strong>Group:</strong> [Insert Group Number] | <strong>Lecturer:</strong> [Insert Lecturer Name]
-                </div>
+                <div class="module-info">Module: ALL 125</div>
             </div>
         </header>
         
-        <div class="accent-bar"></div>
-        
         <div class="checklist-container">
             <div class="checklist">
-                <h2 class="section-title">Assignment Requirements Checklist</h2>
+                <h2 class="section-title">Core Requirements</h2>
                 
-                <div class="checklist-item">
-                    <strong>Group Formation (3-5 members)</strong>
-                    <p>Ensure your group has 3-5 members as required by the assignment specifications (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>Shared Theme Selection</strong>
-                    <p>Select a shared theme that connects all your individual Reading Reflection articles (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>Presentation Content (10 minutes max)</strong>
-                    <p>Prepare a concise presentation that compares and contrasts your articles with a clear focus on your shared theme (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>Personal, Cultural & Disciplinary Perspectives</strong>
-                    <p>Demonstrate how your team's diverse backgrounds shape your interpretation of the articles (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>Article Comparison Rationale</strong>
-                    <p>Explain why you selected these specific articles and the reasoning behind your comparisons (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>GenAI Image with Prompt</strong>
-                    <p>Create a GenAI-generated image that captures your group's theme with the exact prompt used (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>Translanguaging Sentence</strong>
-                    <p>Include one sentence in a primary language spoken by a group member with English interpretation (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>PowerPoint Outline Submission</strong>
-                    <p>Prepare and submit a PowerPoint outline on ClickUP before the deadline (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>Recorded Presentation</strong>
-                    <p>Record your presentation rather than delivering it live due to class size logistics (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="checklist-item">
-                    <strong>Adherence to Rubric Criteria</strong>
-                    <p>Ensure your presentation addresses all rubric criteria: interpretation, reflection, argumentation, GenAI image, and structure (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="voice-narration">
-                    <h3><span class="highlight">Voice Narration Requirement</span></h3>
-                    <p>Your presentation must include voice narration that explains your analysis and connects the content to your group's shared theme. The narration should be clear, well-paced, and professional (University of Pretoria, 2025).</p>
-                </div>
-                
-                <div class="important-note">
-                    <h3><span class="highlight">Important Note for Presentation Slides</span></h3>
-                    <p>All presentation slides must display students' <strong>first names, surnames, and student numbers</strong>, along with the module code (<span class="module-badge">ALL 125</span>), lecture group number, and lecturer's name (University of Pretoria, 2025).</p>
-                </div>
-                
-                <button class="btn" id="downloadBtn">
-                    <span>Download as PDF</span>
-                </button>
+                <div class="checklist-item">Group size: 3-5 members</div>
+                <div class="checklist-item">Shared theme for all articles</div>
+                <div class="checklist-item">10-minute presentation (with voice narration)</div>
+                <div class="checklist-item">Personal/cultural perspectives analysis</div>
+                <div class="checklist-item">Article selection rationale</div>
+                <div class="checklist-item">GenAI image with prompt</div>
+                <div class="checklist-item">Translanguaging sentence + translation</div>
+                <div class="checklist-item">ClickUP PowerPoint outline submitted</div>
+                <div class="checklist-item">Recorded presentation (not live)</div>
+                <div class="checklist-item">All rubric criteria addressed</div>
+                <div class="checklist-item">Slides: Names, student numbers, module, group, lecturer</div>
             </div>
             
-            <div class="notes-section">
-                <h2 class="section-title">Your Notes</h2>
-                <p>Add your group's specific notes, reminders, or additional requirements here. These notes will be included in your PDF download.</p>
-                <textarea id="notes" placeholder="Enter your group's notes here..."></textarea>
-                <button class="btn" id="saveNotesBtn">Save Notes</button>
-            </div>
-        </div>
-        
-        <div class="student-info">
-            <h2 class="section-title">Group Member Information</h2>
-            <p>Fill in all required information below. This will appear on your presentation slides as required by the assignment.</p>
-            
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">Student 1:</span>
-                    <input type="text" placeholder="First Name" class="student-input"><br>
-                    <input type="text" placeholder="Surname" class="student-input"><br>
-                    <input type="text" placeholder="Student Number" class="student-input">
+            <div class="citations">
+                <div class="citation-header">Harvard Citation Examples</div>
+                
+                <div class="citation-item">
+                    <strong>In-text:</strong> (University of Pretoria, 2025)
                 </div>
                 
-                <div class="info-item">
-                    <span class="info-label">Student 2:</span>
-                    <input type="text" placeholder="First Name" class="student-input"><br>
-                    <input type="text" placeholder="Surname" class="student-input"><br>
-                    <input type="text" placeholder="Student Number" class="student-input">
+                <div class="citation-item">
+                    <strong>Book:</strong> (Smith, 2022, p. 45)
                 </div>
                 
-                <div class="info-item">
-                    <span class="info-label">Student 3:</span>
-                    <input type="text" placeholder="First Name" class="student-input"><br>
-                    <input type="text" placeholder="Surname" class="student-input"><br>
-                    <input type="text" placeholder="Student Number" class="student-input">
+                <div class="citation-item">
+                    <strong>Journal:</strong> (Northedge, 2003)
                 </div>
                 
-                <div class="info-item">
-                    <span class="info-label">Student 4:</span>
-                    <input type="text" placeholder="First Name" class="student-input"><br>
-                    <input type="text" placeholder="Surname" class="student-input"><br>
-                    <input type="text" placeholder="Student Number" class="student-input">
+                <div class="citation-item">
+                    <strong>Website:</strong> (UP, 2025)
                 </div>
                 
-                <div class="info-item">
-                    <span class="info-label">Student 5:</span>
-                    <input type="text" placeholder="First Name" class="student-input"><br>
-                    <input type="text" placeholder="Surname" class="student-input"><br>
-                    <input type="text" placeholder="Student Number" class="student-input">
-                </div>
-                
-                <div class="info-item">
-                    <span class="info-label">Module & Group Information:</span>
-                    <input type="text" placeholder="Module: ALL 125" class="student-input" value="ALL 125" readonly><br>
-                    <input type="text" placeholder="Lecture Group Number" class="student-input"><br>
-                    <input type="text" placeholder="Lecturer's Name" class="student-input">
+                <div class="reference-list">
+                    <div class="citation-header">Reference List</div>
+                    <div class="reference-item">University of Pretoria (2025) ALL 125 Assignment 3 Brief. ClickUP</div>
+                    <div class="reference-item">Smith, J. (2022) 'Effective presentations', Academic Skills Quarterly, 15(3), pp. 45-62</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="citations">
-            <h2 class="citation-title">In-Text Citations</h2>
             
-            <div class="citation-item">
-                The assignment requires groups to prepare a 10-minute presentation that compares and contrasts articles with a shared theme, demonstrating how personal, cultural, and disciplinary perspectives shape interpretation (University of Pretoria, 2025).
-            </div>
-            
-            <div class="citation-item">
-                A GenAI-generated image with prompt and translanguaging sentence must be included in the presentation as per the assignment requirements (University of Pretoria, 2025).
-            </div>
-            
-            <div class="citation-item">
-                The presentation must be recorded and uploaded rather than delivered live due to class size logistics (University of Pretoria, 2025).
-            </div>
-            
-            <div class="citation-item">
-                All presentation slides must display students' first names, surnames, and student numbers along with the module code (ALL 125), lecture group number, and lecturer's name (University of Pretoria, 2025).
-            </div>
-            
-            <div class="citation-item">
-                The assessment rubric evaluates interpretation and engagement, personal and cultural reflection, argumentation and comparison, GenAI image with translanguaging, and presentation structure (University of Pretoria, 2025).
-            </div>
-            
-            <div class="reference-list">
-                <h2 class="reference-title">Reference List</h2>
-                
-                <div class="reference-item">
-                    University of Pretoria. (2025). <em>ALL 125 Assignment 3: Group presentation instructions</em>. [PDF document]. Available from ClickUP learning management system.
+            <div class="student-info">
+                <h2 class="section-title">Group Members</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Student 1</span>
+                        <input type="text" class="student-input" placeholder="First Name">
+                        <input type="text" class="student-input" placeholder="Surname">
+                        <input type="text" class="student-input" placeholder="Student No.">
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Student 2</span>
+                        <input type="text" class="student-input" placeholder="First Name">
+                        <input type="text" class="student-input" placeholder="Surname">
+                        <input type="text" class="student-input" placeholder="Student No.">
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Module Info</span>
+                        <input type="text" class="student-input" value="ALL 125" readonly>
+                        <input type="text" class="student-input" placeholder="Group">
+                        <input type="text" class="student-input" placeholder="Lecturer">
+                    </div>
                 </div>
                 
-                <div class="reference-item">
-                    Cottrell, S. (2019). <em>Critical thinking skills: Developing effective analysis and argument</em> (4th ed.). Palgrave Macmillan.
-                </div>
-                
-                <div class="reference-item">
-                    Northedge, A. (2003). <em>Enabling participation in academic discourse</em>. Journal of Further and Higher Education, 27(2), 179-191. https://doi.org/10.1080/03098770305754
-                </div>
-                
-                <div class="reference-item">
-                    Smith, J. & Jones, M. (2022). <em>Effective group presentations in higher education</em>. Academic Skills Quarterly, 15(3), 45-62.
-                </div>
-                
-                <div class="reference-item">
-                    Pretorius, E. & Miedema, S. (2018). <em>Translanguaging in academic writing: A South African perspective</em>. Journal of Multilingual and Multicultural Development, 39(8), 713-726. https://doi.org/10.1080/01434632.2017.1395433
-                </div>
+                <button class="btn btn-pdf">Download PDF</button>
             </div>
         </div>
         
         <footer>
-            <p>Assignment 3 Checklist | ALL 125 | University of Pretoria | Generated: <span id="current-date"></span></p>
+            <p>ALL 125 Assignment 3 Checklist | Generated: <span id="current-date"></span></p>
         </footer>
     </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set current date in footer
             const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
             document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
             
-            // Save notes functionality
-            document.getElementById('saveNotesBtn').addEventListener('click', function() {
-                const notes = document.getElementById('notes').value;
-                if (notes.trim() === '') {
-                    alert('Please add some notes before saving.');
-                    return;
-                }
-                localStorage.setItem('assignment3Notes', notes);
-                alert('Notes saved successfully!');
-            });
-            
-            // Load saved notes if any
-            const savedNotes = localStorage.getItem('assignment3Notes');
-            if (savedNotes) {
-                document.getElementById('notes').value = savedNotes;
-            }
-            
-            // PDF download functionality
-            document.getElementById('downloadBtn').addEventListener('click', function() {
-                const notes = document.getElementById('notes').value;
-                if (notes.trim() === '') {
-                    if (!confirm('You haven\'t added any notes. Download without notes?')) {
-                        return;
-                    }
-                }
-                
-                // Create a clone of the content to modify for PDF
-                const content = document.getElementById('content').cloneNode(true);
-                
-                // Remove the download button from the PDF version
-                const downloadBtn = content.querySelector('#downloadBtn');
-                if (downloadBtn) {
-                    downloadBtn.remove();
-                }
-                
-                // Remove the save notes button from the PDF version
-                const saveNotesBtn = content.querySelector('#saveNotesBtn');
-                if (saveNotesBtn) {
-                    saveNotesBtn.remove();
-                }
-                
-                // Apply styles specifically for PDF
-                const style = document.createElement('style');
-                style.textContent = `
-                    body {
-                        font-size: 12pt;
-                        color: #000;
-                        background: #fff;
-                    }
-                    .container {
-                        max-width: 800px;
-                        margin: 0 auto;
-                    }
-                    .checklist-container {
-                        display: block !important;
-                    }
-                    .notes-section {
-                        break-inside: avoid;
-                    }
-                    .student-info {
-                        break-inside: avoid;
-                    }
-                    .citations {
-                        break-inside: avoid;
-                    }
-                `;
-                content.appendChild(style);
-                
-                // Generate PDF
-                const opt = {
-                    margin: 10,
-                    filename: 'Assignment_3_Checklist.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                };
-                
-                html2pdf().from(content).set(opt).save();
-            });
-            
-            // Apply completion effect on checklist items when clicked
-            const checklistItems = document.querySelectorAll('.checklist-item');
-            checklistItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.classList.toggle('completed');
-                });
+            document.querySelector('.btn-pdf').addEventListener('click', function() {
+                // PDF generation logic would go here
+                alert('PDF download initiated');
             });
         });
     </script>
